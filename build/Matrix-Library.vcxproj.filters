@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\mmaar\Documents\GitHub\Cpp-Matrix-Library\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mmaar\Documents\GitHub\Cpp-Matrix-Library\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{813B5916-DE80-3E33-B381-0DDC78A6D0A5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

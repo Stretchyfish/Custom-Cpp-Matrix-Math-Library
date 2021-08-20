@@ -1,0 +1,10 @@
+^C:\USERS\MMAAR\DOCUMENTS\GITHUB\CPP-MATRIX-LIBRARY\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/mmaar/Documents/GitHub/Cpp-Matrix-Library -BC:/Users/mmaar/Documents/GitHub/Cpp-Matrix-Library/build --check-stamp-file C:/Users/mmaar/Documents/GitHub/Cpp-Matrix-Library/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
