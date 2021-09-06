@@ -33,30 +33,46 @@ class Matrix
         Matrix()
         {
 
-        };
+        }
+
+        Matrix(int m, int n)
+        {
+            values = std::vector<std::vector<T>>(m, std::vector<T>(n, 0));
+        }
 
         Matrix(std::vector<std::vector<T>> _values)
         {
             values = _values;
         }
 
-        int rows()
+        int Rows()
         {
             return this->values.size();
         }
 
-        int cols()
+        int Cols()
         {
             return this->values[0].size();
         }
 
+        void Fill(T fillValue)
+        {
+            for(int j = 0; j < this->Rows(); j++)
+            {
+                for(int i = 0; i < this->Cols(); i++)
+                {
+                    this->values[j][i] = fillValue;
+                }
+            }
+        }
+
         void Print()  // Prints matrix making it easier to debug
         {
-            for(int j = 0; j < values.size(); j++)
+            for(int j = 0; j < this->Rows(); j++)
             {
-                for(int i = 0; i < values[j].size(); i++)
+                for(int i = 0; i < this->Cols(); i++)
                 {
-                    std::cout << values[i][j] << " ";
+                    std::cout << values[j][i] << " ";
                 }
                 std::cout << "\n";
             }
@@ -71,11 +87,11 @@ class Matrix
         Matrix<T> operator+(Matrix<T> B)
         {
             Matrix<T> A(values);
-            if(A.rows() == A.rows() && A.cols() == B.cols())
+            if(A.Rows() == A.Rows() && A.Cols() == B.Cols())
             {
-                for(int j = 0; j < A.values.size(); j++)
+                for(int j = 0; j < A.Rows(); j++)
                 {
-                    for(int i = 0; i < A.values[j].size(); i++)
+                    for(int i = 0; i < A.Cols(); i++)
                     {
                         A.values[j][i] = A.values[j][i] + B.values[j][i];
                     }
@@ -89,12 +105,30 @@ class Matrix
             return A;
         }
 
-        Matrix<T> operator*(Matrix<T> B)
+        Matrix<T> operator*(Matrix<T> B) // Matrix multiplication 
         {
             Matrix<T> A(this->values);
-            if(A.cols() == B.rows())
+            if(A.Cols() == B.Rows())
             {
-
+                Matrix<T> C(A.Rows(), B.Cols());
+                
+                for(int Aj = 0; Aj < A.Rows(); Aj++)
+                {
+                    for(int Bi = 0; Bi < B.Cols(); Bi++)
+                    {
+                        T sum = 0;
+                        for(int calculateIndex = 0; calculateIndex < B.Cols(); calculateIndex++)
+                        {
+                            sum += A[Aj][calculateIndex] * B[calculateIndex][Bi];
+                        }
+                        C[Aj][Bi] = sum;
+                    }
+                }
+                return C;
+            }
+            else
+            {
+                std::cout << "Matrix multiplication failed due to incorrect dimensions. \n";
             }
         }
 
